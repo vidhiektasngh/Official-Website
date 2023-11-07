@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 13;
+            background-color: #494747; /* Grey background */
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            width: 300px;
+            padding: 20px;
+            background-color: #fff; /* White background for the form */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Box shadow for the form */
+            text-align: center;
+        }
+        .logo {
+            text-align: center;
+        }
+        .logo img {
+            max-width: 100px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            color: #272626; /* White text color */
+            text-align: left;
+        }
+        .form-group label, .form-group input {
+            display: block;
+        }
+        .form-group input {
+            width: 90%;
+            padding: 10px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-align: center;
+        }
+        h5{
+            margin-bottom: 20px;
+            text-decoration-color: red;
+            color: red;
+            text-align: left;
+        }
+        .heading {
+            color: black;
+            font-size: large;
+            text-align: center;
+        }
+        p{
+            font-family: cursive;
+            font-size: smaller;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="{% static 'assets/img/logo.png' %}" alt="Company Logo" height="70" width="70">
+        </div>
+        <div class="heading">
+            <h3>Login</h3>
+        </div>
+        <form action="{% url 'sign_in' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="username" placeholder="someone789" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="password123" required>
+            </div>
+            <button type="submit" class="btn">Sign In</button>
+            {% for message in messages %}
+            <h5>
+                {{message}}
+            </h5>
+            {% endfor %}        
+        </form>
+    </div>
+</body>
+</html>

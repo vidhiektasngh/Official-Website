@@ -1,0 +1,208 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Join VES</title>
+
+    <style>
+
+        body {
+        background-color: #333; /* Adjust the color as needed */
+        color: #fff; /* Set the text color to white or a contrasting color */
+        margin: 100px 0; /* Add margin to the top and bottom of the body */
+        }
+
+        /* Apply a card-like structure to the form */
+        form {
+            background-color: #dadada;
+            border: 1px solid #3f3f3f;
+            border-radius: 10px;
+            padding: 5%; /* Adjust the padding as needed */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            width: 100%; /* Set the width to 100% for responsiveness */
+            max-width: 700px; /* Adjust the maximum width as needed */
+
+            /* Add a media query for smaller screens (e.g., mobile devices) */
+            @media (max-width: 100px) {
+                padding: 10px; /* Adjust the padding for smaller screens */
+            }
+        }
+
+
+        /* Apply a black and white theme to the form */
+        form {
+        color: #474646;
+        background-color: #ffffff;
+        }
+
+        /* Apply a cover image with a border to the upper section */
+        form::before {
+            content: "";
+            display: block;
+            background-image: url("{% static 'assets/img/VIDHI EKTA SNGH cover.png' %}");
+            background-size: cover;
+            height: 40vh; /* Adjust the height as needed */
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border: 1px solid #ccc;
+        }
+        /* Style each question section */
+        form > div {
+        margin: 10px 10px;
+        }
+
+        /* Apply 'Poppins' font style to the question text */
+        form p {
+        font-family: 'Poppins', sans-serif;
+        }
+
+
+        /* Style the text inputs */
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        color: #000;
+        font-size: 16px;
+        }
+
+        /* Style the radio buttons */
+        form input[type="radio"] {
+        margin-right: 5px;
+        }
+
+        /* Style the submit button */
+        form input[type="submit"] {
+        background-color: #007bff; /* Blue color, you can change it to your preferred color */
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        }
+
+        /* Style the labels for radio buttons */
+        form label {
+        text-decoration-color: #fff;
+        font-weight: bold;
+        margin-right: 10px;
+        }
+
+        /* Style the paragraph elements */
+        form p {
+        font-weight: bold;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <form method="POST" action="{% url 'register' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <p>Full Name</p>
+            <input type="text" name="full_name" placeholder="Tanay Mishra" required>
+        </div>
+        
+        <div>
+            <p>Email</p>
+            <input type="email" name="email" placeholder="tanaymishra@gmail.com" required>
+        </div>
+        <div>
+            <p>Adress</p>
+            <input type="text" name="address" placeholder="12/905M Bhavya Nagar, Uttar Pradesh, Prayagraj, India" required>
+        </div>
+        <div>
+            <p>College Name</p>
+            <input type="text" name="college_name" placeholder="ISDC College Prayagraj" required>
+        </div>
+        <div>
+            <p>Current Semester</p>
+            <input type="text" name="semester" placeholder="5th" required>
+        </div>
+        <div>
+            <p>Course Name</p>
+            <input type="text" name="course_name" placeholder="BA.LLB" required>
+        </div>
+        <div>
+            <p>Phone Number</p>
+            <input type="text" name="phone_number" placeholder="1234567890" required>
+        </div>
+        <div>
+            <p>WhatsApp Number</p>
+            <input type="text" name="whatsapp_number" placeholder="1234567890" required>
+        </div>
+        <div>
+            <p>Instagram Username</p>
+            <input type="text" name="insta_username" placeholder="@tanaymishra" required>
+        </div>
+        <div>
+            <p>Twitter Username</p>
+            <input type="text" name="twitter_username" placeholder="@tanaymishra" required>
+        </div>
+        <div>
+            <p>Telegram Username</p>
+            <input type="text" name="telegram_username" placeholder="@tanaymishra" required>
+        </div>
+        <div>
+            <p>Date Of Birth</p>
+            <input type="text" name="DOB" placeholder="2000-01-01" required>
+        </div>
+        <div>
+            <p>Write a couple of unique words about yourself to make us feel uncomfortable.</p>
+            <input type="text" name="para" placeholder="I am a Law Student......." required>
+        </div>
+        <div>
+            <p>Upload CV</p>
+            <input type="file" name="file_cv" accept=".pdf, .docx, .doc, .img, .jpg, .jpeg">
+        </div>
+        <div>
+            <p>Any Verified Documents</p>
+            <input type="file" name="verified_doc" accept=".pdf, .docx, .doc, .img, .jpg, .jpeg">
+        </div>
+        <div>
+            <p>Your College ID</p>
+            <input type="file" name="college_id" accept=".pdf, .docx, .doc, .img, .jpg, .jpeg">
+        </div>
+        <div>
+            <p>Your Photograph</p>
+            <input type="file" name="photo" accept=".img, .jpg, .jpeg">
+        </div>
+        <div>
+            <p>Recent Examination Result</p>
+            <input type="file" name="result" accept=".img, .jpg, .jpeg, .pdf, .docx, .doc">
+        </div>
+        <div>
+            <p>Write your current occupation:</p>
+            <input type="text" name="occupation" placeholder="Advocate,Law Student, Judge, Other in Law Field..." required>
+        </div>
+        <div>
+            <p><label for="question">Is this example helpful?</label><br></p>
+                <input type="radio" name="declaration" value="True" id="yes">
+                <label for="yes">YES</label>
+                <input type="radio" name="declaration" value="False" id="no">
+                <label for="no">NO</label><br>
+        </div>
+        <div>
+            <p><label for="question">I hereby declare that all the statements and entries made in this application are true, complete and correct to the best of my knowledge and belief and understanding. In the event of any information being found false or incorrect or ineligibility being detected before or after the interview/selection, my candidate/appointment may be cancelled, and all my claims for recruitment be forfeited. I have also enclosed all the relevant documents in support of my candidature.</label></p>
+                <input type="radio" name="flexRadioDefault" value="True" id="yes">
+                <label for="yes">YES</label>
+                <input type="radio" name="flexRadioDefault" value="False" id="no">
+                <label for="no">NO</label><br><br>
+        </div>
+        <div>
+            <input type="submit" value="Register">
+        </div>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Member Registration</title>
+    <!-- Add this script to your idcard.html template -->
+    <script>
+        // Function to redirect to the home page
+        function redirectToHome() {
+            window.location.href = "{% url 'sign_up' %}"; // Replace 'home' with the actual URL pattern name of your home page
+        }
+    </script>
+    <style>
+        /* styles.css */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #494747; /* Grey background */
+            color: #000000; /* White text color */
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 300px;
+            padding: 20px;
+            background-color: #fff; /* White background for the form */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Box shadow for the form */
+            text-align: center; /* Center align the content in the container */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        p {
+            text-align: left;
+            margin: 8px 0;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 4px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #0074d9; /* Blue color for the submit button */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .logo {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .question {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>ID Card Details</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <br>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+            <br>
+            <input type="submit" value="Create Task">
+        </form>
+        
+    </div>
+</body>
+</html>

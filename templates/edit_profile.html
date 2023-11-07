@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Profile</title>
+    <script>
+        // Function to redirect to the home page
+        function redirectToHome() {
+            window.location.href = "{% url 'sign_up' %}"; // Replace 'home' with the actual URL pattern name of your home page
+        }
+    </script>
+    <style>
+        /* styles.css */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #494747; /* Grey background */
+            color: #000000; /* White text color */
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 300px;
+            padding: 20px;
+            background-color: #fff; /* White background for the form */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Box shadow for the form */
+            text-align: center; /* Center align the content in the container */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        p {
+            text-align: left;
+            margin: 8px 0;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 4px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #0074d9; /* Blue color for the submit button */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .logo {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .question {
+            text-align: left;
+        }
+        .back{
+            background-color: #ccc;
+            height: 50px;
+            width: 50px;
+            align-self: normal;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">    
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <label for="profile_picture">Profile Picture:</label>
+            <input type="file" name="profile_picture" accept="image/*">
+            <br>
+            
+            <label for="bio">Bio:</label>
+            <textarea name="bio" rows="4" cols="50">{{ user_profile.bio }}</textarea>
+            <br>
+            
+            <label for="contact_information">Contact Information:</label>
+            <input type="text" name="contact_information" value="{{ user_profile.contact_information }}">
+            <br>
+            
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+    <!-- <div class="container">
+        <h3>Edit Profile</h3>
+        <form method="post" enctype="multipart/form-data" action="{% url 'idcard' %}">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Full Name" required>
+
+            <input type="text" name="course" placeholder="Course" required>
+
+            <input type="text" name="college" placeholder="College" required>
+
+            <input type="text" name="phone_number" placeholder="Phone Number" required>
+
+            <input type="email" name="email" placeholder="Email" required>
+
+            <label class="question">Upload Your Picture</label>
+            <input type="file" name="photo" accept="image/*" required>
+
+            <button type="submit">Save Changes</button>        
+        </form>
+    </div> -->
+</body>
+</html>
+

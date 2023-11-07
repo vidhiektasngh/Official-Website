@@ -1,0 +1,13 @@
+<h1>Id Card generated</h1>
+
+<h4>Download Idcard</h4>
+<form method="post" action="{% url 'post' member_id=member.id %}">
+    {% csrf_token %}
+    <input  type="submit" class="clear-announcement" value="Download">
+</form>
+
+<h4>Retun to Home Page </h4>
+<form method="post" action="{% url '/' %}">
+    {% csrf_token %}
+    <input  type="submit" class="clear-announcement" value="Download">
+</form>

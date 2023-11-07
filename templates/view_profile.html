@@ -1,0 +1,154 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>View Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size:13px;
+            background-color: #494747; /* Grey background */
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background-size: cover;
+            background-position: center;
+            border: 1px solid white;
+            z-index: -1;
+        }
+
+        .content {
+            position: relative; /* Maintain the default stacking order for content */
+            z-index: 1; /* Ensure that content is above the background image */
+        }
+        .profile_img img{
+            max-width: 300px;
+            border-radius: 50%;
+        }
+        .profile_img {
+            text-align: center;
+            border-radius: 50%;
+            border-width: 2px;
+            border-color: #fff;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            color: #272626; /* White text color */
+            text-align: left;
+        }
+        .form-group label, .form-group input {
+            display: block;
+        }
+        .form-group input {
+            width: 90%;
+            padding: 10px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn{
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 40px;
+        }
+        h5{
+            margin-bottom: 20px;
+            text-decoration-color: red;
+            color: red;
+            text-align: left;
+        }
+        .name {
+            color: black;
+            font-size: large;
+        }
+        .bio{
+            color: darkgray;
+            font-size: small;
+        }
+        .back{
+            background-color: #ccc;
+            height: 50px;
+            width: 50px;
+            align-self: first baseline;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="container">
+        <div class="profile-box">
+            <h1>{{ user.username }}</h1>
+    
+            {% if user_profile.profile_picture %}
+                <img src="{{ user_profile.profile_picture.url }}" class="profile-picture" alt="Profile Picture">
+            {% else %}
+                <p><strong>Profile Picture:</strong> No image available</p>
+            {% endif %}
+    
+            {% if user_profile.bio %}
+                <p>{{ user_profile.bio }}</p>
+            {% else %}
+                <p><strong>Bio:</strong> No bio available</p>
+            {% endif %}
+
+            {% if user_profile.contact_information %}
+                <p>{{ user_profile.contact_information }}</p>
+            {% else %}
+                <p><strong>Contact Information:</strong> No contact information available</p>
+            {% endif %}
+    
+            <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a> 
+    </div>-->
+    <div class="container">
+
+        {% if user_profile.profile_picture %}
+            <div class="profile_img">
+                <img src="{{ user_profile.profile_picture.url }}" alt="Profile Image" height="70" width="70">
+            </div>
+        {% else %}
+            <div class="profile_img">
+                <img src="{% static 'assets/img/logo.png' %}" alt="Profile Image" height="70" width="70">
+            </div>
+        {% endif %}
+
+        <div class="name">
+            <h1>{{ user.username }}</h1>
+        </div>
+        {% if user_profile.bio %}
+            <p class="bio">{{ user_profile.bio }}</p>
+        {% else %}
+            <p class="bio">No bio available</p>
+        {% endif %}
+
+        {% if user_profile.contact_information %}
+            <p class="bio">{{ user_profile.contact_information }}</p>
+        {% else %}
+            <p class="bio">No contact information available</p>
+        {% endif %}
+
+        <a href="{% url 'edit_profile' %}" class="btn">Edit Profile</a>
+    </div>
+</body>
+</html>
